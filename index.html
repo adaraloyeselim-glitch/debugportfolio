@@ -1,569 +1,427 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Selim Adaraloye — Frontend Developer & Designer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#0a0c0b;
-    --surface:#14171a;
-    --surface-2:#1b1f22;
-    --line:#272b2e;
-    --text:#ecefec;
-    --muted:#909995;
-    --accent:#e7e9ea;
-    --accent-dim:rgba(231,233,234,.12);
-    --mono:'JetBrains Mono', monospace;
-    --sans:'Inter', system-ui, sans-serif;
-    --maxw:1100px;
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:
-      radial-gradient(circle at 1px 1px, rgba(255,255,255,0.035) 1px, transparent 0) 0 0/26px 26px,
-      var(--bg);
-    color:var(--text);
-    font-family:var(--sans);
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-  a{color:inherit; text-decoration:none;}
-  ::selection{background:var(--accent-dim); color:var(--accent);}
-  :focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:4px;}
-  img{max-width:100%; display:block;}
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Selim Adaraloye — frontend developer building clean, responsive digital experiences with HTML, CSS, JavaScript, and React.">
+  <title>Selim Adaraloye — Frontend Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f7f4;
+      --ink: #171916;
+      --muted: #696c65;
+      --line: #dedfd8;
+      --card: #fff;
+      --lime: #c9ff55;
+      --lime-dark: #9bdc22;
+      --radius: 22px;
+      --shadow: 0 18px 50px rgba(27, 31, 23, .08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "DM Sans", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 82% 8%, rgba(201,255,85,.20), transparent 20rem),
+        var(--bg);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    h1, h2, h3 { font-family: "Manrope", sans-serif; line-height: 1.08; margin: 0; }
+    p { margin: 0; }
+    .container { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+    .section { padding: 96px 0; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      color: var(--muted);
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--lime-dark); }
+    .section-title { font-size: clamp(2rem, 5vw, 3.6rem); letter-spacing: -.06em; }
+    .section-intro { max-width: 620px; margin-top: 14px; color: var(--muted); }
 
-  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
-  section{padding:88px 0;}
-  @media (max-width:768px){ section{padding:56px 0;} }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(222,223,216,.75);
+      background: rgba(247,247,244,.86);
+      backdrop-filter: blur(14px);
+    }
+    .nav-inner { height: 76px; display: flex; align-items: center; justify-content: space-between; }
+    .brand { display: flex; align-items: center; gap: 10px; font-family: "Manrope", sans-serif; font-weight: 800; }
+    .brand-mark {
+      width: 40px; height: 40px; border-radius: 12px;
+      display: grid; place-items: center;
+      background: var(--ink); color: var(--lime);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.08);
+    }
+    .nav-links { display: flex; align-items: center; gap: 28px; font-size: .92rem; font-weight: 600; }
+    .nav-links a { color: var(--muted); transition: .2s; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links .nav-cta { color: var(--ink); }
 
-  .eyebrow{
-    font-family:var(--mono); font-size:13px; color:var(--accent);
-    letter-spacing:.02em; margin-bottom:10px; display:flex; align-items:center; gap:8px;
-  }
-  .eyebrow::before{content:''; width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 3px var(--accent-dim);}
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 48px;
+      padding: 0 19px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform .18s, box-shadow .18s, background .18s;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(20,22,18,.08); }
+    .btn-primary { background: var(--lime); border-color: var(--lime); }
+    .btn-dark { background: var(--ink); border-color: var(--ink); color: white; }
+    .btn-small { min-height: 42px; padding: 0 15px; font-size: .88rem; }
 
-  h1,h2,h3{font-family:var(--mono); font-weight:700; letter-spacing:-.01em; line-height:1.15;}
-  h2{font-size:30px; margin-bottom:8px;}
-  .section-sub{color:var(--muted); font-size:15px; margin-bottom:40px; max-width:560px;}
+    .hero { min-height: calc(100vh - 76px); display: grid; align-items: center; padding: 72px 0 88px; }
+    .hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: 56px; }
+    .hero h1 { max-width: 760px; font-size: clamp(4rem, 8.5vw, 7.6rem); letter-spacing: -.075em; }
+    .hero h1 span { color: transparent; -webkit-text-stroke: 1.5px var(--ink); }
+    .hero-copy { max-width: 590px; margin: 26px 0 30px; color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.22rem); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .portrait-wrap { position: relative; }
+    .portrait {
+      aspect-ratio: 4 / 5;
+      width: 100%;
+      border-radius: 190px 190px var(--radius) var(--radius);
+      object-fit: cover;
+      background: #e7e8e1;
+      border: 10px solid rgba(255,255,255,.88);
+      box-shadow: var(--shadow);
+    }
+    .portrait-badge {
+      position: absolute;
+      right: -18px;
+      bottom: 24px;
+      width: 132px;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      border-radius: 50%;
+      background: var(--lime);
+      border: 7px solid var(--bg);
+      font: 800 .78rem "Manrope", sans-serif;
+      line-height: 1.25;
+      transform: rotate(8deg);
+    }
 
-  /* ---------- NAV ---------- */
-  nav{
-    position:sticky; top:0; z-index:50;
-    background:rgba(10,12,11,.78); backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:14px 0;}
-  .logo{
-    width:38px; height:38px; border:1px solid var(--accent); border-radius:9px;
-    display:flex; align-items:center; justify-content:center;
-    font-family:var(--mono); font-weight:700; font-size:14px; color:var(--accent);
-  }
-  .nav-links{display:flex; gap:28px; font-size:14px; font-family:var(--mono);}
-  .nav-links a{color:var(--muted); transition:color .2s;}
-  .nav-links a:hover{color:var(--text);}
-  .nav-cta{display:flex; align-items:center; gap:18px;}
-  @media (max-width:768px){ .nav-links{display:none;} }
+    .ticker {
+      overflow: hidden;
+      border-block: 1px solid var(--line);
+      background: var(--card);
+    }
+    .ticker-inner {
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 28px;
+      color: var(--muted);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .ticker-inner span::before { content: "✦"; margin-right: 28px; color: var(--lime-dark); }
 
-  .btn{
-    font-family:var(--mono); font-size:13.5px; font-weight:600;
-    padding:10px 18px; border-radius:8px; cursor:pointer; display:inline-flex;
-    align-items:center; gap:8px; transition:transform .15s, background .15s, border-color .15s;
-    border:1px solid transparent;
-  }
-  .btn:hover{transform:translateY(-1px);}
-  .btn-primary{background:var(--accent); color:#16181a;}
-  .btn-primary:hover{background:#ffffff;}
-  .btn-ghost{border-color:var(--line); color:var(--text); background:var(--surface);}
-  .btn-ghost:hover{border-color:var(--accent); color:var(--accent);}
+    .about-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: 64px; align-items: start; }
+    .about-label {
+      position: sticky;
+      top: 112px;
+      height: 280px;
+      border-radius: var(--radius);
+      background: var(--ink);
+      color: white;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .about-label strong { color: var(--lime); font-size: 4.5rem; line-height: 1; }
+    .about-label span { color: #bfc2ba; }
+    .about-copy h2 { margin-bottom: 24px; }
+    .about-copy > p { max-width: 720px; color: var(--muted); font-size: 1.15rem; }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 34px; }
+    .stat { padding: 20px; border: 1px solid var(--line); border-radius: 16px; background: var(--card); }
+    .stat strong { display: block; font: 800 1.25rem "Manrope", sans-serif; }
+    .stat span { color: var(--muted); font-size: .85rem; }
 
+    .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 38px; }
+    .project-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      transition: transform .22s, box-shadow .22s;
+    }
+    .project-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .project-preview {
+      height: 260px;
+      display: grid;
+      place-items: center;
+      border-bottom: 1px solid var(--line);
+      background: #eef0e8;
+      overflow: hidden;
+    }
+    .project-preview img { width: 100%; height: 100%; object-fit: cover; }
+    .preview-mark { width: 78%; height: 62%; border-radius: 14px; border: 1px solid rgba(23,25,22,.12); box-shadow: 0 20px 40px rgba(23,25,22,.12); }
+    .preview-drip { background: linear-gradient(135deg, #171916 0 58%, #c9ff55 58%); }
+    .preview-silver { background: linear-gradient(135deg, #173f35 0 52%, #edc97a 52%); }
+    .preview-taste { background: linear-gradient(135deg, #702d20 0 58%, #f5b32f 58%); }
+    .preview-portfolio { background: linear-gradient(135deg, #e3e4de 0 65%, #c9ff55 65%); }
+    .project-body { padding: 24px; }
+    .project-meta { display: flex; justify-content: space-between; gap: 12px; color: var(--muted); font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+    .project-body h3 { margin: 10px 0 8px; font-size: 1.55rem; }
+    .project-body p { min-height: 52px; color: var(--muted); font-size: .94rem; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0; }
+    .tag { padding: 6px 10px; border-radius: 999px; background: #f1f2ed; color: #5c6057; font-size: .75rem; font-weight: 700; }
+    .project-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 
-  /* ---------- HERO ---------- */
-  .hero{padding-top:64px;}
-  .hero-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:48px; align-items:center;}
-  @media (max-width:860px){ .hero-grid{grid-template-columns:1fr;} }
-  .hero h1{font-size:42px; margin:6px 0 16px;}
-  @media (max-width:520px){ .hero h1{font-size:32px;} }
-  .hero p.lead{color:var(--muted); font-size:16px; max-width:480px; margin-bottom:28px;}
-  .hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:28px;}
-  .social-row{display:flex; gap:14px;}
-  .icon-btn{
-    width:38px; height:38px; border:1px solid var(--line); border-radius:8px;
-    display:flex; align-items:center; justify-content:center; color:var(--muted);
-    transition:.2s;
-  }
-  .icon-btn:hover{border-color:var(--accent); color:var(--accent);}
+    .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 38px; }
+    .skill-card { padding: 24px; border: 1px solid var(--line); border-radius: 18px; background: var(--card); }
+    .skill-card h3 { font-size: 1.1rem; margin-bottom: 16px; }
+    .skill-list { display: flex; flex-wrap: wrap; gap: 8px; }
 
-  .photo-frame{aspect-ratio:4/5;}
-  .photo-placeholder{
-    width:100%; height:100%; position:relative; overflow:hidden;
-    background:linear-gradient(160deg, var(--surface-2), var(--bg));
-    display:flex; align-items:center; justify-content:center;
-  }
-  .photo-placeholder .mono-big{
-    font-family:var(--mono); font-weight:700; font-size:108px; color:var(--line);
-    letter-spacing:-.04em;
-  }
-  .photo-placeholder .hint{
-    position:absolute; bottom:16px; left:16px; right:16px;
-    font-family:var(--mono); font-size:11.5px; color:var(--muted);
-  }
-  #hero-photo{width:100%; height:100%; object-fit:cover; display:none;}
+    .contact-panel {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 30px;
+      padding: 44px;
+      border-radius: 28px;
+      background: var(--ink);
+      color: white;
+    }
+    .contact-panel h2 { max-width: 700px; font-size: clamp(2.2rem, 5vw, 4.5rem); letter-spacing: -.06em; }
+    .contact-panel h2 span { color: var(--lime); }
+    .contact-actions { display: grid; gap: 10px; }
+    .contact-actions .btn { background: white; color: var(--ink); }
+    .contact-actions .btn-primary { background: var(--lime); }
 
-  /* ---------- SERVICES ---------- */
-  .grid-4{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
-  @media (max-width:920px){ .grid-4{grid-template-columns:repeat(2,1fr);} }
-  @media (max-width:560px){ .grid-4{grid-template-columns:1fr;} }
-  .card{
-    background:var(--surface); border:1px solid var(--line); border-radius:14px;
-    padding:22px; transition:border-color .2s, transform .2s;
-  }
-  .card:hover{border-color:#3a4045; transform:translateY(-2px);}
-  .card h3{font-size:16px; margin-bottom:10px;}
-  .card p{color:var(--muted); font-size:13.5px; margin-bottom:14px;}
-  .tag-row{display:flex; flex-wrap:wrap; gap:8px;}
-  .pill{
-    font-family:var(--mono); font-size:11.5px; color:var(--muted);
-    background:var(--surface-2); border:1px solid var(--line);
-    padding:5px 10px; border-radius:999px;
-  }
+    footer { padding: 28px 0; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; color: var(--muted); font-size: .86rem; }
+    .social-links { display: flex; gap: 18px; }
+    .social-links a:hover { color: var(--ink); }
 
-  /* ---------- ABOUT ---------- */
-  .about-grid{display:grid; grid-template-columns:1fr; gap:28px;}
-  .about-text{color:var(--muted); font-size:15.5px; max-width:680px;}
-  .approach-row{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:28px;}
-  @media (max-width:768px){ .approach-row{grid-template-columns:1fr;} }
-  .approach-item{
-    background:var(--surface); border:1px solid var(--line); border-radius:12px;
-    padding:18px; font-size:14px;
-  }
-  .approach-item .num{font-family:var(--mono); color:var(--accent); font-size:12.5px; display:block; margin-bottom:8px;}
-  .stack-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:24px;}
-
-  /* ---------- SKILLS ---------- */
-  .skill-card h3{font-size:14.5px; margin-bottom:14px; color:var(--text);}
-  .skill-group{margin-bottom:12px;}
-  .skill-group .label{font-family:var(--mono); font-size:11px; color:var(--muted); margin-bottom:6px; display:block;}
-
-  /* ---------- PROJECTS ---------- */
-  .proj-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px;}
-  @media (max-width:860px){ .proj-grid{grid-template-columns:1fr;} }
-  .proj-card{padding:0;}
-  .proj-body{padding:22px;}
-  .proj-card h3{font-size:18px; margin-bottom:6px;}
-  .proj-kicker{font-family:var(--mono); font-size:11.5px; color:var(--accent); margin-bottom:10px; display:block;}
-  .proj-card p{color:var(--muted); font-size:14px; margin-bottom:16px;}
-  .proj-card .tag-row{margin-bottom:18px;}
-
-  /* ---------- CODE VAULT ---------- */
-  .vault-shell{padding:0;}
-  .vault-body{padding:22px;}
-  .vault-form{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px;}
-  @media (max-width:560px){ .vault-form{grid-template-columns:1fr;} }
-  .vault-form input, .vault-form textarea{
-    width:100%; background:var(--bg); border:1px solid var(--line); border-radius:8px;
-    color:var(--text); padding:10px 12px; font-family:var(--mono); font-size:13px;
-    resize:vertical;
-  }
-  .vault-form textarea{grid-column:1/-1; min-height:120px;}
-  .vault-form input::placeholder, .vault-form textarea::placeholder{color:#5b6164;}
-  .vault-actions{display:flex; justify-content:flex-end; gap:10px; margin-bottom:18px;}
-  .snippet-list{display:flex; flex-direction:column; gap:12px;}
-  .snippet{background:var(--bg); border:1px solid var(--line); border-radius:10px; overflow:hidden;}
-  .snippet-head{
-    display:flex; justify-content:space-between; align-items:center;
-    padding:10px 14px; background:var(--surface-2); border-bottom:1px solid var(--line);
-  }
-  .snippet-head .title{font-size:13.5px; font-weight:600;}
-  .snippet-head .lang{font-family:var(--mono); font-size:11px; color:var(--muted);}
-  .snippet pre{
-    margin:0; padding:14px; font-family:var(--mono); font-size:12.5px; color:#d6d8d9;
-    overflow-x:auto; white-space:pre;
-  }
-  .snippet-actions{display:flex; gap:8px;}
-  .mini-btn{
-    font-family:var(--mono); font-size:11px; color:var(--muted); background:transparent;
-    border:1px solid var(--line); border-radius:6px; padding:5px 9px; cursor:pointer; transition:.2s;
-  }
-  .mini-btn:hover{border-color:var(--accent); color:var(--accent);}
-  .empty-state{font-family:var(--mono); font-size:13px; color:var(--muted); text-align:center; padding:24px 0;}
-
-  /* ---------- CONTACT / FOOTER ---------- */
-  .contact-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px;}
-  @media (max-width:860px){ .contact-grid{grid-template-columns:repeat(2,1fr);} }
-  @media (max-width:520px){ .contact-grid{grid-template-columns:1fr;} }
-  .contact-card{display:flex; align-items:center; gap:12px;}
-  .contact-card svg{flex-shrink:0; color:var(--accent);}
-  .contact-card .ct-label{font-family:var(--mono); font-size:11px; color:var(--muted); display:block;}
-  .contact-card .ct-value{font-size:13.5px; word-break:break-word;}
-  footer{border-top:1px solid var(--line); padding:28px 0; text-align:center;}
-  footer p{font-family:var(--mono); font-size:12px; color:var(--muted);}
-
-  @media (prefers-reduced-motion: reduce){
-    *{transition:none !important; animation:none !important; scroll-behavior:auto !important;}
-  }
-</style>
+    :focus-visible { outline: 3px solid var(--lime-dark); outline-offset: 4px; }
+    @media (max-width: 860px) {
+      .nav-links a:not(.nav-cta) { display: none; }
+      .hero-grid, .about-grid, .contact-panel { grid-template-columns: 1fr; }
+      .hero { padding-top: 48px; }
+      .hero-grid { gap: 38px; }
+      .portrait-wrap { max-width: 460px; width: 85%; justify-self: end; }
+      .about-label { position: static; height: auto; min-height: 180px; }
+      .project-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .contact-actions { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .container { width: min(100% - 28px, 1120px); }
+      .section { padding: 68px 0; }
+      .nav-inner { height: 68px; }
+      .nav-links { gap: 10px; }
+      .brand-name { display: none; }
+      .hero h1 { font-size: clamp(3.2rem, 16vw, 5rem); }
+      .portrait-wrap { width: 92%; }
+      .portrait-badge { width: 108px; right: -8px; }
+      .stats, .skills-grid { grid-template-columns: 1fr; }
+      .project-preview { height: 220px; }
+      .contact-panel { padding: 28px 22px; }
+      .contact-actions { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; }
+    }
+  </style>
 </head>
 <body>
-
-<nav>
-  <div class="wrap nav-inner">
-    <div class="logo">As</div>
-    <div class="nav-links">
-      <a href="#home">Home</a>
-      <a href="#services">Services</a>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#vault">Code Vault</a>
-    </div>
-    <div class="nav-cta">
-      <a class="btn btn-primary" href="https://wa.me/2347032091643" target="_blank" rel="noopener">Let's Talk</a>
-    </div>
-  </div>
-</nav>
-
-<!-- ================= HERO ================= -->
-<section class="hero" id="home">
-  <div class="wrap hero-grid">
-    <div>
-      <div class="eyebrow">I am selim</div>
-      <h1>Frontend Developer<br>&amp; Product Designer</h1>
-      <p class="lead">I build interactive, good-looking products — from mobile app concepts to browser-based dev tools — pairing clean code with a distinct visual identity.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#projects">View Projects</a>
-        <a class="btn btn-ghost" href="mailto:adaraloyeselim@gmail.com">Email Me</a>
-      </div>
-      <div class="social-row">
-        <a class="icon-btn" href="https://github.com/adaraloyeselim-glitch" target="_blank" rel="noopener" aria-label="GitHub">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.9.57.1.78-.25.78-.55v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.95.1-.74.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.2-3.1-.12-.29-.52-1.46.11-3.05 0 0 .98-.31 3.2 1.18a11.1 11.1 0 0 1 5.83 0c2.22-1.5 3.2-1.18 3.2-1.18.63 1.59.23 2.76.11 3.05.75.81 1.2 1.84 1.2 3.1 0 4.43-2.69 5.4-5.25 5.69.42.36.78 1.08.78 2.18v3.23c0 .3.21.66.79.55A11.5 11.5 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5Z"/></svg>
-        </a>
-        <a class="icon-btn" href="https://www.linkedin.com/in/saleem-adaraloye-8b72183a3" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
-        </a>
-        <a class="icon-btn" href="https://wa.me/2347032091643" target="_blank" rel="noopener" aria-label="WhatsApp">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.02 2C6.5 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.96 9.96 0 0 0 12.02 22C17.5 22 22 17.52 22 12S17.5 2 12.02 2Zm5.85 14.21c-.25.7-1.45 1.34-2 1.43-.51.08-1.15.11-1.86-.12-.43-.13-.98-.31-1.69-.6-2.97-1.28-4.9-4.27-5.05-4.47-.15-.2-1.2-1.6-1.2-3.04 0-1.45.76-2.16 1.03-2.46.27-.3.59-.37.79-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.25.6.84 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.49-.15.18-.31.4-.45.54-.15.15-.3.31-.13.6.17.3.76 1.25 1.63 2.02 1.12 1 2.07 1.31 2.37 1.46.3.15.48.13.65-.05.18-.18.74-.86.94-1.16.2-.3.4-.25.67-.15.27.1 1.72.81 2.02.96.3.15.5.22.57.35.07.13.07.74-.18 1.44Z"/></svg>
-        </a>
-      </div>
-    </div>
-
-    <div class="photo-frame chrome">
-      <div class="chrome-bar">
-        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
-        <span class="chrome-path">~/selim/profile.jpg</span>
-      </div>
-      <div class="photo-placeholder">
-        <img id="hero-photo" src="" alt="Selim Adaraloye">
-        <span class="mono-big">AS</span>
-        <span class="hint">// add your photo: find &lt;img id="hero-photo"&gt; below and set its src to your image (a URL or a base64 data:// string), then remove the "display:none" inline style.</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= SERVICES ================= -->
-<section id="services">
-  <div class="wrap">
-    <div class="eyebrow">// services</div>
-    <h2>What I do</h2>
-    <p class="section-sub">Designing and building interfaces that work cleanly and look intentional.</p>
-    <div class="grid-4">
-      <div class="card">
-        <h3>UI/UX &amp; Product Design</h3>
-        <p>Clean, user-focused layouts with a clear structure and a visual identity that fits the product.</p>
-        <div class="tag-row"><span class="pill">Wireframing</span><span class="pill">Visual identity</span></div>
-      </div>
-      <div class="card">
-        <h3>Frontend Development</h3>
-        <p>Responsive interfaces built with React, Next.js, and Tailwind — animated with Framer Motion.</p>
-        <div class="tag-row"><span class="pill">React / Next.js</span><span class="pill">Tailwind CSS</span></div>
-      </div>
-      <div class="card">
-        <h3>Interactive Prototypes</h3>
-        <p>Mobile app concepts and product mockups brought to life as fully clickable, in-browser builds.</p>
-        <div class="tag-row"><span class="pill">App UI mockups</span><span class="pill">Live demos</span></div>
-      </div>
-      <div class="card">
-        <h3>Tools &amp; PWAs</h3>
-        <p>Offline-capable web apps with service workers, browser runtimes, and AI integration.</p>
-        <div class="tag-row"><span class="pill">PWA setup</span><span class="pill">AI integration</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= ABOUT ================= -->
-<section id="about">
-  <div class="wrap about-grid">
-    <div>
-      <div class="eyebrow">// about me</div>
-      <h2>About Me</h2>
-      <p class="about-text">I'm a frontend developer and designer who likes turning ideas into polished, working products — whether that's a streetwear app concept, a browser-based dev tool, or this site. I care about pairing solid code with a visual identity that actually fits what's being built, not a generic template.</p>
-      <div class="approach-row">
-        <div class="approach-item"><span class="num">// 01</span>Understand the idea &amp; who it's for</div>
-        <div class="approach-item"><span class="num">// 02</span>Design a layout and identity that fits it</div>
-        <div class="approach-item"><span class="num">// 03</span>Build it, test it, ship it</div>
-      </div>
-      <div class="stack-row">
-        <span class="pill">React</span><span class="pill">Next.js</span><span class="pill">Tailwind</span>
-        <span class="pill">Framer Motion</span><span class="pill">Python</span><span class="pill">Figma</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= SKILLS ================= -->
-<section id="skills">
-  <div class="wrap">
-    <div class="eyebrow">// skills</div>
-    <h2>Skills</h2>
-    <p class="section-sub">Crafting seamless UI/UX with clean, maintainable code.</p>
-    <div class="grid-4">
-      <div class="card skill-card">
-        <h3>Core Skills</h3>
-        <div class="tag-row"><span class="pill">UI/UX layout</span><span class="pill">Frontend dev</span><span class="pill">Responsive design</span><span class="pill">Component-based design</span></div>
-      </div>
-      <div class="card skill-card">
-        <h3>Frontend Tech</h3>
-        <div class="tag-row"><span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">JavaScript</span><span class="pill">React</span><span class="pill">Next.js</span></div>
-      </div>
-      <div class="card skill-card">
-        <h3>Design Tools</h3>
-        <div class="tag-row"><span class="pill">Figma</span><span class="pill">Visual identity</span><span class="pill">Prototyping</span></div>
-      </div>
-      <div class="card skill-card">
-        <h3>Tools &amp; Workflow</h3>
-        <div class="tag-row"><span class="pill">Git</span><span class="pill">GitHub</span><span class="pill">Netlify</span><span class="pill">PWA / Service Workers</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= PROJECTS ================= -->
-<section id="projects">
-  <div class="wrap">
-    <div class="eyebrow">// projects</div>
-    <h2>Recent Work</h2>
-    <p class="section-sub">A couple of builds I've shipped recently.</p>
-    <div class="proj-grid">
-      <div class="card proj-card">
-        <div class="chrome-bar">
-          <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
-          <span class="chrome-path">rukus/app.tsx</span>
-        </div>
-        <div class="proj-body">
-          <span class="proj-kicker">Mobile App UI/UX</span>
-          <h3>RUKUS</h3>
-          <p>A fully interactive streetwear app mockup with five navigable screens — Home, Shop, Product Detail, Bag, and Profile — plus a live cart system. Near-black palette with safety-orange and hi-vis-yellow accents, Anton/Space Mono type, and a hang-tag visual motif throughout.</p>
-          <div class="tag-row"><span class="pill">HTML/CSS/JS</span><span class="pill">Single-file build</span><span class="pill">Live cart</span></div>
-        </div>
-      </div>
-      <div class="card proj-card">
-        <div class="chrome-bar">
-          <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
-          <span class="chrome-path">pyshell-pro/index.html</span>
-        </div>
-        <div class="proj-body">
-          <span class="proj-kicker">Browser-Based Tool</span>
-          <h3>PyShell Pro</h3>
-          <p>A browser-based Python IDE powered by Pyodide (CPython 3.11 via WebAssembly) with CodeMirror syntax highlighting, an interactive terminal with input() support, and dual AI assistant integration. Shipped as an installable, offline-capable PWA deployed on Netlify.</p>
-          <div class="tag-row"><span class="pill">Pyodide / WASM</span><span class="pill">PWA</span><span class="pill">AI integration</span></div>
-        </div>
-      </div>
-    </div>
-    <div style="text-align:center; margin-top:28px;">
-      <a class="btn btn-ghost" href="https://github.com/adaraloyeselim-glitch" target="_blank" rel="noopener">See more on GitHub →</a>
-    </div>
-  </div>
-</section>
-
-<!-- ================= CODE VAULT ================= -->
-<section id="vault">
-  <div class="wrap">
-    <div class="eyebrow">// code vault</div>
-    <h2>Save a Snippet</h2>
-    <p class="section-sub">A private spot to keep code snippets you want to reuse. Saved on this device, just for you.</p>
-
-    <div class="chrome vault-shell">
-      <div class="chrome-bar">
-        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
-        <span class="chrome-path">vault/snippets.local</span>
-      </div>
-      <div class="vault-body">
-        <div class="vault-form">
-          <input id="snippet-title" type="text" placeholder="Title — e.g. debounce function">
-          <input id="snippet-lang" type="text" placeholder="Language / tag — e.g. javascript">
-          <textarea id="snippet-code" placeholder="Paste your code here..."></textarea>
-        </div>
-        <div class="vault-actions">
-          <button class="mini-btn" id="clear-all-btn">Clear all</button>
-          <button class="btn btn-primary" id="save-snippet-btn" style="font-size:13px; padding:9px 16px;">Save Snippet</button>
-        </div>
-        <div class="snippet-list" id="snippet-list">
-          <div class="empty-state" id="loading-state">Loading your snippets…</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= CONTACT ================= -->
-<section id="contact">
-  <div class="wrap">
-    <div class="eyebrow">// get in touch</div>
-    <h2>Let's Work Together</h2>
-    <p class="section-sub">Reach out on whichever works best for you — WhatsApp is fastest.</p>
-    <div class="contact-grid">
-      <a class="card contact-card" href="https://wa.me/2347032091643" target="_blank" rel="noopener">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.02 2C6.5 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.96 9.96 0 0 0 12.02 22C17.5 22 22 17.52 22 12S17.5 2 12.02 2Zm5.85 14.21c-.25.7-1.45 1.34-2 1.43-.51.08-1.15.11-1.86-.12-.43-.13-.98-.31-1.69-.6-2.97-1.28-4.9-4.27-5.05-4.47-.15-.2-1.2-1.6-1.2-3.04 0-1.45.76-2.16 1.03-2.46.27-.3.59-.37.79-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.25.6.84 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.49-.15.18-.31.4-.45.54-.15.15-.3.31-.13.6.17.3.76 1.25 1.63 2.02 1.12 1 2.07 1.31 2.37 1.46.3.15.48.13.65-.05.18-.18.74-.86.94-1.16.2-.3.4-.25.67-.15.27.1 1.72.81 2.02.96.3.15.5.22.57.35.07.13.07.74-.18 1.44Z"/></svg>
-        <span><span class="ct-label">WhatsApp</span><span class="ct-value">+234 703 209 1643</span></span>
+  <nav aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a class="brand" href="#home" aria-label="Back to top">
+        <span class="brand-mark">SA</span>
+        <span class="brand-name">Selim Adaraloye</span>
       </a>
-      <a class="card contact-card" href="mailto:adaraloyeselim@gmail.com">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-        <span><span class="ct-label">Email</span><span class="ct-value">adaraloyeselim@gmail.com</span></span>
-      </a>
-      <a class="card contact-card" href="https://www.linkedin.com/in/saleem-adaraloye-8b72183a3" target="_blank" rel="noopener">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
-        <span><span class="ct-label">LinkedIn</span><span class="ct-value">saleem-adaraloye</span></span>
-      </a>
-      <a class="card contact-card" href="https://github.com/adaraloyeselim-glitch" target="_blank" rel="noopener">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.9.57.1.78-.25.78-.55v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.95.1-.74.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.2-3.1-.12-.29-.52-1.46.11-3.05 0 0 .98-.31 3.2 1.18a11.1 11.1 0 0 1 5.83 0c2.22-1.5 3.2-1.18 3.2-1.18.63 1.59.23 2.76.11 3.05.75.81 1.2 1.84 1.2 3.1 0 4.43-2.69 5.4-5.25 5.69.42.36.78 1.08.78 2.18v3.23c0 .3.21.66.79.55A11.5 11.5 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5Z"/></svg>
-        <span><span class="ct-label">GitHub</span><span class="ct-value">adaraloyeselim-glitch</span></span>
-      </a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a class="btn btn-primary btn-small nav-cta" href="#contact">Let’s talk</a>
+      </div>
     </div>
-  </div>
-</section>
+  </nav>
 
-<footer>
-  <p>// built by Selim Adaraloye — © 2026</p>
-</footer>
-
-<script>
-  // ---------- Code Vault: persistent snippet manager ----------
-  const listEl = document.getElementById('snippet-list');
-  const titleInput = document.getElementById('snippet-title');
-  const langInput = document.getElementById('snippet-lang');
-  const codeInput = document.getElementById('snippet-code');
-  const saveBtn = document.getElementById('save-snippet-btn');
-  const clearAllBtn = document.getElementById('clear-all-btn');
-
-  function escapeHtml(str){
-    return str.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  }
-
-  function renderSnippets(snippets){
-    listEl.innerHTML = '';
-    if(!snippets.length){
-      listEl.innerHTML = '<div class="empty-state">No snippets saved yet — add your first one above.</div>';
-      return;
-    }
-    snippets
-      .sort((a,b) => b.created - a.created)
-      .forEach(s => {
-        const div = document.createElement('div');
-        div.className = 'snippet';
-        div.innerHTML = `
-          <div class="snippet-head">
-            <div>
-              <span class="title">${escapeHtml(s.title || 'Untitled')}</span>
-              <span class="lang"> · ${escapeHtml(s.lang || 'text')}</span>
-            </div>
-            <div class="snippet-actions">
-              <button class="mini-btn" data-action="copy" data-id="${s.id}">Copy</button>
-              <button class="mini-btn" data-action="delete" data-id="${s.id}">Delete</button>
-            </div>
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Available for work</div>
+          <h1>Frontend <span>Developer</span></h1>
+          <p class="hero-copy">I’m Selim Adaraloye, a frontend developer building clean, responsive, and memorable digital experiences.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">Explore projects <span aria-hidden="true">↘</span></a>
+            <a class="btn" href="mailto:adaraloyeselim@gmail.com">Email me</a>
           </div>
-          <pre>${escapeHtml(s.code)}</pre>
-        `;
-        listEl.appendChild(div);
-      });
-  }
+        </div>
+        <div class="portrait-wrap">
+          <img class="portrait" src="WhatsApp%20Image%202026-11-20%20at%2006.56.37.jpeg" alt="Selim Adaraloye">
+          <div class="portrait-badge">WEB<br>DEVELOPMENT</div>
+        </div>
+      </div>
+    </section>
 
-  async function loadSnippets(){
-    try{
-      const list = await window.storage.list('snippet:', false);
-      if(!list || !list.keys || !list.keys.length){
-        renderSnippets([]);
-        return;
-      }
-      const snippets = [];
-      for(const key of list.keys){
-        try{
-          const result = await window.storage.get(key, false);
-          if(result && result.value){
-            snippets.push(JSON.parse(result.value));
-          }
-        }catch(e){ /* skip unreadable entries */ }
-      }
-      renderSnippets(snippets);
-    }catch(e){
-      listEl.innerHTML = '<div class="empty-state">Couldn\'t load snippets. Try refreshing.</div>';
-      console.error('Vault load error:', e);
-    }
-  }
+    <div class="ticker" aria-label="Areas of expertise">
+      <div class="ticker-inner">
+        <span>Frontend development</span>
+        <span>React development</span>
+        <span>Responsive websites</span>
+        <span>Interactive products</span>
+      </div>
+    </div>
 
-  saveBtn.addEventListener('click', async () => {
-    const code = codeInput.value.trim();
-    if(!code){ codeInput.focus(); return; }
-    const snippet = {
-      id: 'snip_' + Date.now(),
-      title: titleInput.value.trim(),
-      lang: langInput.value.trim(),
-      code,
-      created: Date.now()
-    };
-    saveBtn.textContent = 'Saving…';
-    try{
-      const result = await window.storage.set('snippet:' + snippet.id, JSON.stringify(snippet), false);
-      if(!result) throw new Error('Save returned null');
-      titleInput.value = ''; langInput.value = ''; codeInput.value = '';
-      await loadSnippets();
-    }catch(e){
-      alert('Could not save the snippet. Please try again.');
-      console.error('Vault save error:', e);
-    }finally{
-      saveBtn.textContent = 'Save Snippet';
-    }
-  });
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <aside class="about-label">
+          <strong>4</strong>
+          <span>public projects<br>and counting</span>
+        </aside>
+        <div class="about-copy">
+          <div class="eyebrow">About me</div>
+          <h2 class="section-title">I turn ideas into usable digital products.</h2>
+          <p>I care about the details that make an interface feel right: a clear visual hierarchy, thoughtful interactions, responsive layouts, and code that is easy to maintain. My work spans ecommerce, school, restaurant, and portfolio experiences.</p>
+          <div class="stats">
+            <div class="stat"><strong>Frontend</strong><span>HTML, CSS &amp; JavaScript</span></div>
+            <div class="stat"><strong>Modern</strong><span>React &amp; Vite builds</span></div>
+            <div class="stat"><strong>Focused</strong><span>Responsive websites</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  listEl.addEventListener('click', async (e) => {
-    const btn = e.target.closest('button[data-action]');
-    if(!btn) return;
-    const { action, id } = btn.dataset;
-    if(action === 'delete'){
-      try{
-        await window.storage.delete('snippet:' + id, false);
-        await loadSnippets();
-      }catch(err){ console.error('Delete error:', err); }
-    }
-    if(action === 'copy'){
-      const codeText = btn.closest('.snippet').querySelector('pre').textContent;
-      try{
-        await navigator.clipboard.writeText(codeText);
-        btn.textContent = 'Copied!';
-        setTimeout(() => btn.textContent = 'Copy', 1200);
-      }catch(err){ console.error('Clipboard error:', err); }
-    }
-  });
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="eyebrow">Selected work</div>
+        <h2 class="section-title">Projects</h2>
+        <p class="section-intro">All public websites and repositories from my GitHub, presented with both a live demo and source code link.</p>
 
-  clearAllBtn.addEventListener('click', async () => {
-    if(!confirm('Delete all saved snippets? This can\'t be undone.')) return;
-    try{
-      const list = await window.storage.list('snippet:', false);
-      if(list && list.keys){
-        for(const key of list.keys){
-          await window.storage.delete(key, false);
-        }
-      }
-      await loadSnippets();
-    }catch(e){ console.error('Clear all error:', e); }
-  });
+        <div class="project-grid">
+          <article class="project-card">
+            <div class="project-preview"><div class="preview-mark preview-drip" role="img" aria-label="DripbyG design preview"></div></div>
+            <div class="project-body">
+              <div class="project-meta"><span>Ecommerce</span><span>React · Vite</span></div>
+              <h3>DripbyG</h3>
+              <p>A React storefront concept for discovering and presenting modern fashion products.</p>
+              <div class="tag-row"><span class="tag">JavaScript</span><span class="tag">React</span><span class="tag">Vite</span></div>
+              <div class="project-actions">
+                <a class="btn btn-primary btn-small" href="https://dripbyg.vercel.app" target="_blank" rel="noopener">Live demo ↗</a>
+                <a class="btn btn-small" href="https://github.com/adaraloyeselim-glitch/DripbyG" target="_blank" rel="noopener">GitHub</a>
+              </div>
+            </div>
+          </article>
 
-  loadSnippets();
-</script>
+          <article class="project-card">
+            <div class="project-preview"><div class="preview-mark preview-silver" role="img" aria-label="Silver Pen School design preview"></div></div>
+            <div class="project-body">
+              <div class="project-meta"><span>Education</span><span>HTML · CSS</span></div>
+              <h3>Silver Pen School</h3>
+              <p>A responsive school website built to present a school profile and its academic information.</p>
+              <div class="tag-row"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Responsive</span></div>
+              <div class="project-actions">
+                <a class="btn btn-primary btn-small" href="https://silverspoon.netlify.app" target="_blank" rel="noopener">Live demo ↗</a>
+                <a class="btn btn-small" href="https://github.com/adaraloyeselim-glitch/silverpenschool" target="_blank" rel="noopener">GitHub</a>
+              </div>
+            </div>
+          </article>
 
-</body>
-</html>
+          <article class="project-card">
+            <div class="project-preview"><div class="preview-mark preview-taste" role="img" aria-label="Taste Treasure design preview"></div></div>
+            <div class="project-body">
+              <div class="project-meta"><span>Restaurant</span><span>HTML</span></div>
+              <h3>Taste Treasure</h3>
+              <p>A food ordering landing page with menu discovery and direct WhatsApp ordering.</p>
+              <div class="tag-row"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">WhatsApp</span></div>
+              <div class="project-actions">
+                <a class="btn btn-primary btn-small" href="https://wa.me/2349135723018?text=Hello%20Taste%20Treasure%2C%20I%27d%20like%20to%20place%20an%20order." target="_blank" rel="noopener">Order now ↗</a>
+                <a class="btn btn-small" href="https://github.com/adaraloyeselim-glitch/treasuretaste" target="_blank" rel="noopener">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-preview"><div class="preview-mark preview-portfolio" role="img" aria-label="Debug portfolio design preview"></div></div>
+            <div class="project-body">
+              <div class="project-meta"><span>Portfolio</span><span>HTML</span></div>
+              <h3>Debug Portfolio</h3>
+              <p>A previous developer portfolio showcasing services, projects, skills, and contact links.</p>
+              <div class="tag-row"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+              <div class="project-actions">
+                <a class="btn btn-primary btn-small" href="https://debugportfolio.netlify.app" target="_blank" rel="noopener">Live demo ↗</a>
+                <a class="btn btn-small" href="https://github.com/adaraloyeselim-glitch/debugportfolio" target="_blank" rel="noopener">GitHub</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="eyebrow">Capabilities</div>
+        <h2 class="section-title">Skills &amp; tools</h2>
+        <div class="skills-grid">
+          <article class="skill-card">
+            <h3>Development</h3>
+            <div class="skill-list"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">React</span></div>
+          </article>
+          <article class="skill-card">
+            <h3>Tools &amp; version control</h3>
+            <div class="skill-list"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Vite</span><span class="tag">Netlify</span><span class="tag">Vercel</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-panel">
+          <div>
+            <div class="eyebrow" style="color:#bfc2ba">Let’s build</div>
+            <h2>Have an idea? <span>Let’s make it real.</span></h2>
+          </div>
+          <div class="contact-actions">
+            <a class="btn btn-primary" href="mailto:adaraloyeselim@gmail.com">Send an email</a>
+            <a class="btn" href="https://wa.me/2347032091643" target="_blank" rel="noopener">WhatsApp me</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 Selim Adaraloye</span>
+      <div class="social-links">
+        <a href="https://github.com/adaraloyeselim-glitch" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/saleem-adaraloye-8b72183a3" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:adaraloyeselim@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+
+</body></html>
